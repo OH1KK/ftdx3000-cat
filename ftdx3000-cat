@@ -26,7 +26,7 @@ function SerialWriteAndRead() {
         stty -F $tty $speed
 	echo "$1" >&5
 	while IFS='' read -t 1 -r line || [[ -n "$line"  ]]; do
-	    echo "$line"
+	    REPLY="$line"
 	done <&4
 }
 
@@ -61,13 +61,34 @@ case "$1" in
 		SerialWrite "MD03;"
 		;;
 	readfreq)
-		SerialWrite "FA;"
+		SerialWriteAndRead "FA;"
+		FREQ=`echo ${REPLY:2:8} | awk '{printf "%8.3f\n",$1/1000}'`
+		echo "VFO A is tuned to $FREQ kHz"
 		;;
 	tune)
 		SerialWrite "AC002;"
 		;;
 	readsig)
 		SerialWriteAndRead "SM0;"
+                LEVEL=`echo ${REPLY:3:3} | awk '{printf "%1.0f\n",$1/255*100}'`
+		SREAD="S9+ >60dB *STRONG*"
+		if [ $LEVEL -lt 95 ]; then SREAD="S9+60dB"; fi
+		if [ $LEVEL -lt 89 ]; then SREAD="S9+50dB"; fi
+		if [ $LEVEL -lt 82 ]; then SREAD="S9+40dB"; fi
+		if [ $LEVEL -lt 74 ]; then SREAD="S9+30dB"; fi
+		if [ $LEVEL -lt 66 ]; then SREAD="S9+20dB"; fi
+		if [ $LEVEL -lt 60 ]; then SREAD="S9+10dB"; fi
+		if [ $LEVEL -lt 52 ]; then SREAD="S9"; fi
+		if [ $LEVEL -lt 44 ]; then SREAD="S8"; fi
+		if [ $LEVEL -lt 36 ]; then SREAD="S7"; fi
+		if [ $LEVEL -lt 31 ]; then SREAD="S6"; fi
+		if [ $LEVEL -lt 25 ]; then SREAD="S5"; fi
+		if [ $LEVEL -lt 18 ]; then SREAD="S4"; fi
+		if [ $LEVEL -lt 15 ]; then SREAD="S3"; fi
+		if [ $LEVEL -lt 8 ]; then SREAD="S2"; fi
+		if [ $LEVEL -lt 3 ]; then SREAD="S1"; fi
+		if [ $LEVEL -lt 1 ]; then SREAD="S0"; fi
+		echo "Signal level is $SREAD - ${LEVEL}% of full scale"
 		;;
 	vol*)
 		VOL=`echo ${1//vol/} | awk '{printf "%03d\n",$1/100*255}'`
