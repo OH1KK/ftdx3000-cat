@@ -38,9 +38,9 @@ Change mode to LSB
 
     ftdx3000-cat lsb
    
-Change volume to reasonable level
+Change volume to 40% level
 
-    ftdx3000-cat vol100
+    ftdx3000-cat vol40
 
 ## Troubleshoot
 
