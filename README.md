@@ -24,11 +24,11 @@ Tune to 3699kHz
 
 Change mode to LSB
 
-   ftdx3000-cat lsb
+    ftdx3000-cat lsb
    
 Change volume to reasonable level
 
-   ftdx3000-cat vol100
+    ftdx3000-cat vol100
 
 ## Troubleshoot
 
@@ -37,3 +37,7 @@ Make sure you have access to serial ports, add yourself to dialout group
    sudo adduser USERNAME dialout
    
 Where username is your user account
+
+## Licence
+
+GPLv3
