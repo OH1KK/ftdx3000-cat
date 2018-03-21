@@ -1,9 +1,7 @@
 # ftdx3000-cat
 Shell script to command Yaesu FTDX-3000 rig
 
-ftdx3000-cat  {poweron|poweroff|30-56000|lsb|usb|cw|readfreq|readsig|tune|vol000 - 255}
-
-See CAT commands: https://www.yaesu.com/downloadFile.cfm?FileID=8925&FileCatID=158&FileName=FTDX3000%5FCAT%5FOM%5FENG.pdf&FileContentType=application%2Fpdf
+ftdx3000-cat  {poweron|poweroff|30-56000|lsb|usb|cw|readfreq|readsig|tune|vol0 - 99}
 
 ## Requirements
 
@@ -42,12 +40,16 @@ Change volume to 40% level
 
     ftdx3000-cat vol40
 
+## More info
+
+Download FTDX3000 series CAT Operation Reference Book from Yaesu web site: https://www.yaesu.com/downloadFile.cfm?FileID=8925&FileCatID=158&FileName=FTDX3000%5FCAT%5FOM%5FENG.pdf&FileContentType=application%2Fpdf
+
 ## Troubleshoot
 
 Make sure you have access to serial ports, add yourself to dialout group
 
     sudo usermod -a -G dialout user
-   
+
 ## Licence
 
 GPLv3
