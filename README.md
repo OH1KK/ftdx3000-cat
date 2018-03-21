@@ -34,10 +34,8 @@ Change volume to reasonable level
 
 Make sure you have access to serial ports, add yourself to dialout group
 
-   sudo adduser USERNAME dialout
+    sudo usermod -a -G dialout user
    
-Where username is your user account
-
 ## Licence
 
 GPLv3
