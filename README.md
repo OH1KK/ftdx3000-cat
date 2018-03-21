@@ -75,6 +75,10 @@ Read frequency
     ftdx3000-cat readfreq
     VFO A is tuned to 1847.200 kHz
 
+Tune 200Hz up
+
+    ftdx3000-cat +200
+    
 Read S-meter
 
     ftdx3000-cat readsig
