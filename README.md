@@ -7,9 +7,9 @@ See CAT commands: https://www.yaesu.com/downloadFile.cfm?FileID=8925&FileCatID=1
 
 ## Requirements
 
-* Linux machine
+* Linux computer, for example Raspberry Pi
 * Yaesu FTDX-3000 radio
-* Serial port cable
+* USB-cable between rig and computer
 
 ## Install
 
