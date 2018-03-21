@@ -26,7 +26,7 @@ Then copy script to /usr/local/bin and give execute rights to it
 
 ## Usage
 
-Turn on radio
+Power on the radio
 
     ftdx3000-cat poweron
 
