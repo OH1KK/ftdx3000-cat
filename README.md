@@ -21,7 +21,7 @@ Edit script with your favourite text editor. Update file to match your serial po
     
 Then copy script to /usr/local/bin and give execute rights to it
 
-    cp ftdx3000-cat/ftdx3000-cat/ftdx3000-cat /usr/local/bin
+    cp ftdx3000-cat/ftdx3000-cat /usr/local/bin
     chmod a+rx /usr/local/bin/ftdx3000-cat
 
 ## Usage
