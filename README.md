@@ -15,7 +15,7 @@ readmode	read mode
 readsig		read signal meter
 readfreq	read VFO A frequency
 readsql		read squelch value
-sql0 - sql99	set quelch value
+sql0 - sql99	set squelch value
 lsb		set mode
 usb		set mode
 cw		set mode
