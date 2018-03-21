@@ -2,7 +2,7 @@
 Shell script to command Yaesu FTDX-3000 rig
 
 ```
-ftdx300-cat Yeaesu FTDX-3000 commander
+ftdx3000-cat Yeaesu FTDX-3000 commander
 
 /usr/local/bin/ftdx3000-cat command
 
