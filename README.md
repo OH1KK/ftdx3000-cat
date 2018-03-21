@@ -1,7 +1,35 @@
 # ftdx3000-cat
 Shell script to command Yaesu FTDX-3000 rig
 
-ftdx3000-cat  {poweron|poweroff|30-56000|lsb|usb|cw|readfreq|readsig|tune|vol0 - 99}
+```
+ftdx300-cat Yeaesu FTDX-3000 commander
+
+/usr/local/bin/ftdx3000-cat command
+
+Where command in
+30.0 - 56000.0	set VFO A frequency
+vol0 - vol99	change audio volume 0-99%
+poweron		Power on rig
+poweroff	Power off rig
+readmode	read mode
+readsig		read signal meter
+readfreq	read VFO A frequency
+readsql		read squelch value
+sql0 - sql99	set quelch value
+lsb		set mode
+usb		set mode
+cw		set mode
+fm		set mode
+am		set mode
+fsk		set mode
+cw-r		set mode
+pkt-l		set mode
+fsk-r		set mode
+pkt-fm		set mode
+fm-n		set mode
+pkt-u		set mode
+am-n 		set mode
+```
 
 ## Requirements
 
