@@ -15,9 +15,12 @@ See CAT commands: https://www.yaesu.com/downloadFile.cfm?FileID=8925&FileCatID=1
 
     git clone https://github.com/OH1KK/ftdx3000-cat.git
 
-Edit script to match serial port and CAT-baud rate. Then copy script to /usr/local/bin and give execute rights to it
+Edit script with your favourite text editor. Update file to match your serial port and CAT-baud rate.
 
     vi ftdx3000-cat/ftdx3000-cat 
+    
+Then copy script to /usr/local/bin and give execute rights to it
+
     cp ftdx3000-cat/ftdx3000-cat/ftdx3000-cat /usr/local/bin
     chmod a+rx /usr/local/bin/ftdx3000-cat
 
