@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#    ftdx300-cat Yeaesu FTDX-3000 commander
-#    Copyright (C) 2018  Kari Karvonen <oh1kk@toimii.fi>
+#    ftdx3000-cat Yeaesu FTDX-3000 commander
+#    Copyright (C) 2018  Kari Karvonen <oh1kk (at) toimii.fi>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -74,7 +74,7 @@ case "$1" in
 		SerialWrite "AG0$VOL;"
 		;;
 	*)
-		echo "ftdx300-cat Yeaesu FTDX-3000 commander"
+		echo "ftdx3000-cat Yeaesu FTDX-3000 commander"
 		echo ""
 		echo "$0  {poweron|poweroff|30-56000|lsb|usb|cw|readfreq|readsig|tune|vol000 - 255}"
 		echo ""
