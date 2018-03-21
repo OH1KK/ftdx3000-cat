@@ -1,0 +1,83 @@
+#!/bin/bash
+
+#    ftdx300-cat Yeaesu FTDX-3000 commander
+#    Copyright (C) 2018  Kari Karvonen <oh1kk@toimii.fi>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+tty=/dev/serial/by-id/usb-Silicon_Labs_CP2105_Dual_USB_to_UART_Bridge_Controller_AH046H4H180061-if00-port0
+speed=38400
+
+function SerialWriteAndRead() {
+	exec 4<$tty 5>$tty
+        stty -F $tty $speed
+	echo "$1" >&5
+	while IFS='' read -t 1 -r line || [[ -n "$line"  ]]; do
+	    echo "$line"
+	done <&4
+}
+
+function SerialWrite() {
+	exec 5>$tty
+        stty -F $tty $speed
+	echo "$1" >&5
+}
+
+if [[ $1 =~ (^[0-9]+\.?[0-9]*$)|(^[0-9]*\.[0-9]+$) ]]; then
+	# Only frequency
+	TFREQ=`echo $1 | awk '{printf "%08d\n",$1*1000}'`
+	SerialWrite "FA${TFREQ};"
+	exit
+fi
+
+case "$1" in
+	poweron)
+		SerialWrite ";"
+		SerialWrite "PS1;"
+		;;
+	poweroff)
+		SerialWrite "PS0;"
+		;;
+	lsb)
+		SerialWrite "MD01;"
+		;;
+	usb)
+		SerialWrite "MD02;"
+		;;
+	cw)
+		SerialWrite "MD03;"
+		;;
+	readfreq)
+		SerialWrite "FA;"
+		;;
+	tune)
+		SerialWrite "AC002;"
+		;;
+	readsig)
+		SerialWriteAndRead "SM0;"
+		;;
+	vol[0-9][0-9][0-9])
+		VOL="${1//vol/}"
+		SerialWrite "AG0$VOL;"
+		;;
+	*)
+		echo "ftdx300-cat Yeaesu FTDX-3000 commander"
+		echo ""
+		echo "$0  {poweron|poweroff|30-56000|lsb|usb|cw|readfreq|readsig|tune|vol000 - 255}"
+		echo ""
+		echo "See more CAT commands: https://www.yaesu.com/downloadFile.cfm?FileID=8925&FileCatID=158&FileName=FTDX3000%5FCAT%5FOM%5FENG.pdf&FileContentType=application%2Fpdf"
+		exit 1
+		;;
+esac
+exit 0
