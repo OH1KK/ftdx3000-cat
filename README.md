@@ -7,28 +7,30 @@ ftdx300-cat Yeaesu FTDX-3000 commander
 /usr/local/bin/ftdx3000-cat command
 
 Where command in
-30.0 - 56000.0	set VFO A frequency
-vol0 - vol99	change audio volume 0-99%
+30.0 - 56000.0	Set VFO A frequency
++hz		Tune VFO up where hz value, 100 - 10000
+-hz		Tune VFO down where hz value 100 - 10000
+vol0 - vol99	Change audio volume 0-99%
 poweron		Power on rig
 poweroff	Power off rig
-readmode	read mode
-readsig		read signal meter
-readfreq	read VFO A frequency
-readsql		read squelch value
-sql0 - sql99	set squelch value
-lsb		set mode
-usb		set mode
-cw		set mode
-fm		set mode
-am		set mode
-fsk		set mode
-cw-r		set mode
-pkt-l		set mode
-fsk-r		set mode
-pkt-fm		set mode
-fm-n		set mode
-pkt-u		set mode
-am-n 		set mode
+readmode	Read mode
+readsig		Read signal meter
+readfreq	Read VFO A frequency
+readsql		Read squelch value
+sql0 - sql99	Set quelch value
+lsb		Set mode
+usb		Set mode
+cw		Set mode
+fm		Set mode
+am		Set mode
+fsk		Set mode
+cw-r		Set mode
+pkt-l		Set mode
+fsk-r		Set mode
+pkt-fm		Set mode
+fm-n		Set mode
+pkt-u		Set mode
+am-n 		Set mode
 ```
 
 ## Requirements
