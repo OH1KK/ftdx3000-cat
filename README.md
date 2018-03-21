@@ -7,10 +7,12 @@ See CAT commands: https://www.yaesu.com/downloadFile.cfm?FileID=8925&FileCatID=1
 
 ## Install
 
-* download script
-* edit script, modify script to match your serial port and cat baudrate
-* copy script to /usr/local/bin
-* give execute permissions   chmod a+rx /usr/local/bin/ftdx3000-cat
+    wget https://raw.githubusercontent.com/OH1KK/ftdx3000-cat/master/ftdx3000-cat
+
+Edit script to match serial port and CAT-baud rate. Then copy script to /usr/local/bin and give execute rights to it
+
+    cp ftdx3000-cat /usr/local/bin
+    chmod a+rx /usr/local/bin/ftdx3000-cat
 
 ## Usage
 
