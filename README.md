@@ -50,7 +50,7 @@ Then copy script to /usr/local/bin and give execute rights to it
     sudo cp ftdx3000-cat/ftdx3000-cat /usr/local/bin
     sudo chmod a+rx /usr/local/bin/ftdx3000-cat
 
-## Usage
+## Usage examples
 
 Power on the radio
 
@@ -67,6 +67,16 @@ Change mode to LSB
 Change volume to 40% level
 
     ftdx3000-cat vol40
+
+Read frequency
+
+    ftdx3000-cat readfreq
+    VFO A is tuned to 1847.200 kHz
+
+Read S-meter
+
+    ftdx3000-cat readsig
+    Signal level is S2 - 4% of full scale
 
 ## More info
 
