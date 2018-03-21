@@ -193,7 +193,7 @@ case "$1" in
 		echo "readsig		read signal meter"
 		echo "readfreq	read VFO A frequency"
 		echo "readsql		read squelch value"
-		echo "sql0 - sql99	set quelch value"
+		echo "sql0 - sql99	set squelch value"
 		echo "lsb		set mode"
 		echo "usb		set mode"
 		echo "cw		set mode"
