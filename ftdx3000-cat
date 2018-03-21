@@ -60,10 +60,90 @@ case "$1" in
 	cw)
 		SerialWrite "MD03;"
 		;;
+	fm)
+		SerialWrite "MD04;"
+		;;
+	am)
+		SerialWrite "MD05;"
+		;;
+	fsk)
+		SerialWrite "MD06;"
+		;;
+	cw-r)
+		SerialWrite "MD07;"
+		;;
+	pkt-l)
+		SerialWrite "MD08;"
+		;;
+	fsk-r)
+		SerialWrite "MD09;"
+		;;
+	pkt-fm)
+		SerialWrite "MD0A;"
+		;;
+	fm-n)
+		SerialWrite "MD0B;"
+		;;
+	pkt-u)
+		SerialWrite "MD0C;"
+		;;
+	am-n)
+		SerialWrite "MD0D;"
+		;;
 	readfreq)
 		SerialWriteAndRead "FA;"
 		FREQ=`echo ${REPLY:2:8} | awk '{printf "%8.3f\n",$1/1000}'`
 		echo "VFO A is tuned to $FREQ kHz"
+		;;
+	readsql)
+		SerialWriteAndRead "SQ0;"
+		LEVEL=`echo ${REPLY:3:3} | awk '{printf "%1.0f\n",$1/255*100}'`
+		echo "Squelch level is ${LEVEL}%"
+		;;
+	readmode)
+		SerialWriteAndRead "MD0;"
+		case "${REPLY:3:1}" in
+			"1")
+				echo "Mode is LSB"
+				;;
+			"2")
+				echo "Mode is USB"
+				;;
+			"3")
+				echo "Mode is CW"
+				;;
+			"4")
+				echo "Mode is FM"
+				;;
+			"5")
+				echo "Mode is AM"
+				;;
+			"6")
+				echo "Mode is FSK (RTTY-LSB)"
+				;;
+			"7")
+				echo "Mode is CW-R"
+				;;
+			"8")
+				echo "Mode is PKT-L"
+				;;
+			"9")
+				echo "Mode is FSK-R (RTTY-USB)"
+				;;
+			"A")
+				echo "Mode is PKT-FM"
+				;;
+			"B")
+				echo "Mode is FM-N"
+				;;
+			"C")
+				echo "Mode is PKT-U"
+				;;
+			"D")
+				echo "Mode is AM-N"
+				;;
+			*) 	echo "Mode is unknown"
+		esac		
 		;;
 	tune)
 		SerialWrite "AC002;"
@@ -95,12 +175,38 @@ case "$1" in
 		echo $VOL
 		SerialWrite "AG0$VOL;"
 		;;
+	sql*)
+		SQL=`echo ${1//sql/} | awk '{printf "%03d\n",$1/100*255}'`
+		SerialWrite "SQ0$SQL;"
+		;;
 	*)
 		echo "ftdx300-cat Yeaesu FTDX-3000 commander"
 		echo ""
-		echo "$0  {poweron|poweroff|30-56000|lsb|usb|cw|readfreq|readsig|tune|vol0 - 99}"
+		echo "$0 command"
 		echo ""
-		echo "See more CAT commands: https://www.yaesu.com/downloadFile.cfm?FileID=8925&FileCatID=158&FileName=FTDX3000%5FCAT%5FOM%5FENG.pdf&FileContentType=application%2Fpdf"
+		echo "Where command in"
+		echo "30.0 - 56000.0	set VFO A frequency"
+		echo "vol0 - vol99	change audio volume 0-99%"
+		echo "poweron		Power on rig"
+		echo "poweroff	Power off rig"
+		echo "readmode	read mode"
+		echo "readsig		read signal meter"
+		echo "readfreq	read VFO A frequency"
+		echo "readsql		read squelch value"
+		echo "sql0 - sql99	set quelch value"
+		echo "lsb		set mode"
+		echo "usb		set mode"
+		echo "cw		set mode"
+		echo "fm		set mode"
+		echo "am		set mode"
+		echo "fsk		set mode"
+		echo "cw-r		set mode"
+		echo "pkt-l		set mode"
+		echo "fsk-r		set mode"
+		echo "pkt-fm		set mode"
+		echo "fm-n		set mode"
+		echo "pkt-u		set mode"
+		echo "am-n 		set mode"
 		exit 1
 		;;
 esac
