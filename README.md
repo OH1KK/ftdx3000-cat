@@ -13,11 +13,12 @@ See CAT commands: https://www.yaesu.com/downloadFile.cfm?FileID=8925&FileCatID=1
 
 ## Install
 
-    wget https://raw.githubusercontent.com/OH1KK/ftdx3000-cat/master/ftdx3000-cat
+    git clone https://github.com/OH1KK/ftdx3000-cat.git
 
 Edit script to match serial port and CAT-baud rate. Then copy script to /usr/local/bin and give execute rights to it
 
-    cp ftdx3000-cat /usr/local/bin
+    vi ftdx3000-cat/ftdx3000-cat 
+    cp ftdx3000-cat/ftdx3000-cat/ftdx3000-cat /usr/local/bin
     chmod a+rx /usr/local/bin/ftdx3000-cat
 
 ## Usage
