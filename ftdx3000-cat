@@ -90,6 +90,16 @@ case "$1" in
 	am-n)
 		SerialWrite "MD0D;"
 		;;
+	+[0-9]*[0-9])
+		SerialWriteAndRead "FA;"
+		NEWFREQ=`echo ${REPLY:2:8} ${1//+/} | awk '{printf "%08d\n",$1+$2}'`
+		SerialWrite "FA${NEWFREQ};"
+		;;
+	-[0-9]*[0-9])
+		SerialWriteAndRead "FA;"
+		NEWFREQ=`echo ${REPLY:2:8} ${1//-/} | awk '{printf "%08d\n",$1-$2}'`
+		SerialWrite "FA${NEWFREQ};"
+		;;
 	readfreq)
 		SerialWriteAndRead "FA;"
 		FREQ=`echo ${REPLY:2:8} | awk '{printf "%8.3f\n",$1/1000}'`
@@ -185,28 +195,30 @@ case "$1" in
 		echo "$0 command"
 		echo ""
 		echo "Where command in"
-		echo "30.0 - 56000.0	set VFO A frequency"
-		echo "vol0 - vol99	change audio volume 0-99%"
+		echo "30.0 - 56000.0	Set VFO A frequency"
+		echo "+hz		Tune VFO up where hz value, 100 - 10000"
+		echo "-hz		Tune VFO down where hz value 100 - 10000"
+		echo "vol0 - vol99	Change audio volume 0-99%"
 		echo "poweron		Power on rig"
 		echo "poweroff	Power off rig"
-		echo "readmode	read mode"
-		echo "readsig		read signal meter"
-		echo "readfreq	read VFO A frequency"
-		echo "readsql		read squelch value"
-		echo "sql0 - sql99	set squelch value"
-		echo "lsb		set mode"
-		echo "usb		set mode"
-		echo "cw		set mode"
-		echo "fm		set mode"
-		echo "am		set mode"
-		echo "fsk		set mode"
-		echo "cw-r		set mode"
-		echo "pkt-l		set mode"
-		echo "fsk-r		set mode"
-		echo "pkt-fm		set mode"
-		echo "fm-n		set mode"
-		echo "pkt-u		set mode"
-		echo "am-n 		set mode"
+		echo "readmode	Read mode"
+		echo "readsig		Read signal meter"
+		echo "readfreq	Read VFO A frequency"
+		echo "readsql		Read squelch value"
+		echo "sql0 - sql99	Set quelch value"
+		echo "lsb		Set mode"
+		echo "usb		Set mode"
+		echo "cw		Set mode"
+		echo "fm		Set mode"
+		echo "am		Set mode"
+		echo "fsk		Set mode"
+		echo "cw-r		Set mode"
+		echo "pkt-l		Set mode"
+		echo "fsk-r		Set mode"
+		echo "pkt-fm		Set mode"
+		echo "fm-n		Set mode"
+		echo "pkt-u		Set mode"
+		echo "am-n 		Set mode"
 		exit 1
 		;;
 esac
