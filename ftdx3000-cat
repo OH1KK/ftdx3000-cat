@@ -16,8 +16,10 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+### CHANGE THESE TO MATCH YOUR SERIAL PORT AND CAT BAUD RATE
 tty=/dev/serial/by-id/usb-Silicon_Labs_CP2105_Dual_USB_to_UART_Bridge_Controller_AH046H4H180061-if00-port0
 speed=38400
+### 
 
 function SerialWriteAndRead() {
 	exec 4<$tty 5>$tty
