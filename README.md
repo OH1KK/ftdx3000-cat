@@ -5,6 +5,12 @@ ftdx3000-cat  {poweron|poweroff|30-56000|lsb|usb|cw|readfreq|readsig|tune|vol000
 
 See CAT commands: https://www.yaesu.com/downloadFile.cfm?FileID=8925&FileCatID=158&FileName=FTDX3000%5FCAT%5FOM%5FENG.pdf&FileContentType=application%2Fpdf
 
+## Requirements
+
+* Linux machine
+* Yaesu FTDX-3000 radio
+* Serial port cable
+
 ## Install
 
     wget https://raw.githubusercontent.com/OH1KK/ftdx3000-cat/master/ftdx3000-cat
