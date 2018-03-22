@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#    ftdx3000-cat Yeaesu FTDX-3000 commander
+#    ftdx3000-cat Yaesu FTDX-3000 commander
 #    Copyright (C) 2018  Kari Karvonen <oh1kk@toimii.fi>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -190,7 +190,7 @@ case "$1" in
 		SerialWrite "SQ0$SQL;"
 		;;
 	*)
-		echo "ftdx3000-cat Yeaesu FTDX-3000 commander"
+		echo "ftdx3000-cat Yaesu FTDX-3000 commander"
 		echo ""
 		echo "$0 command"
 		echo ""
